@@ -1,11 +1,11 @@
 .sidebar__title
-  margin-bottom: 20px
+  margin-bottom: 50px
 
   a
-    font-size: 16px
+    font-size: 18px
     letter-spacing: 2px
     text-transform: uppercase
-    font-weight: bold
+    font-weight: 500
     text-decoration: none
     color: $dark-body-color
 
@@ -13,9 +13,9 @@
       border-bottom: dotted 1px #9055a2
 
 .sidebar__intro
-  color: $light-body-color
+  color: $base-body-color
   font-size: 13px
-  margin-bottom: 20px
+  margin-bottom: 30px
 
   p
     margin-bottom: 10px
@@ -24,13 +24,17 @@
       margin-bottom: 0
 
 .sidebar__menu
-  margin-bottom: 20px
+  margin-bottom: 30px
 
   li
     a
       text-decoration: none
+      text-transform: uppercase
+      font-size: 13px
+      font-weight: 500
+      line-height: 25px
+      letter-spacing: 0.5px
       display: block
-      padding-left: 20px
       color: $base-body-color
       position: relative
 
@@ -39,14 +43,8 @@
         position: absolute
         left: 0
         top: 50%
-        margin-top: -6px
-        height: 12px
-        width: 12px
-        background: url('https://cdn.rawgit.com/encharm/Font-Awesome-SVG-PNG/master/black/svg/chevron-right.svg')
-        background-position: 50% 50%
-        background-repeat: no-repeat
-        background-size: contain
-        opacity: 0.6
+        margin-top: 6px
+       
 
       &:hover
         color: $active-color
