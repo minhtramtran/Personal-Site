@@ -1,17 +1,17 @@
 import React from 'react'
-import Layout from "../components/layout"
 import { Link, graphql } from 'gatsby'
+import Layout from "../components/layout"
 
 const Blog = ({ data }) => (
   <Layout>
-      {data.allDatoCmsBlogPost.edges.map(({ node: post }) => (
+      {data.allDatoCmsBlogPost.edges.map(({ node: blogpost }) => (
         <article className="sheet">
           <div className="sheet__inner">
               <h6 className="card__title">
-                <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+                <Link to={`/blog/${blogpost.slug}`}>{blogpost.title}</Link>
               </h6>
               <div className="card__description">
-              <p>{post.meta.createdAt} ⏤ {post.excerpt}</p>
+              <p>{blogpost.meta.createdAt} ⏤ {blogpost.excerpt}</p>
               </div>
           </div>
         </article>
