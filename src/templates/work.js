@@ -17,10 +17,12 @@ export default ({ data }) => (
               <img alt={data.datoCmsWork.title} key={fluid.src} src={fluid.src} />
             ))}
           </Slider>
-          {data.datoCmsWork.videolink 
-             ? <ReactPlayer controls="true" url={data.datoCmsWork.videolink}/>
-             : ''
-          }
+          <div className="player-wrapper">
+            {data.datoCmsWork.videolink 
+              ? <ReactPlayer className="react-player" width="100%" height="100%" controls="true" light={data.datoCmsWork.videothumbnail} url={data.datoCmsWork.videolink}/>
+              : ''
+            }
+          </div>
           <div className="media-caption">Project Demo and Technical Implementation</div>
         </div>
         <div
@@ -43,6 +45,7 @@ export const query = graphql`
       title
       excerpt
       videolink
+      videothumbnail
       gallery {
         fluid(maxWidth: 200, imgixParams: { fm: "jpg", auto: "compress" }) {
           src

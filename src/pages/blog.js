@@ -23,7 +23,7 @@ export default Blog
 
 export const query = graphql`
   query BlogQuery {
-    allDatoCmsBlogPost(sort: { fields: [id], order: ASC }) {
+    allDatoCmsBlogPost(sort: { fields: [id], order: DESC }) {
       edges {
         node {
           id
