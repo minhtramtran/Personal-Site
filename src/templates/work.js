@@ -12,19 +12,16 @@ export default ({ data }) => (
       <div className="sheet__inner">
         <h1 className="sheet__title">{data.datoCmsWork.title}</h1>
         <div className="sheet__slider">
-          <Slider infinite={true} slidesToShow={2} arrows>
+          <Slider infinite={true} slidesToShow={1} arrows={true}>
             {data.datoCmsWork.gallery.map(({ fluid }) => (
               <img alt={data.datoCmsWork.title} key={fluid.src} src={fluid.src} />
             ))}
           </Slider>
-          <div className="player-wrapper">
-            {data.datoCmsWork.videolink 
-              ? <ReactPlayer className="react-player" width="100%" height="100%" controls="true" light={data.datoCmsWork.videothumbnail} url={data.datoCmsWork.videolink}/>
-              : ''
-            }
-          </div>
-          <div className="media-caption">Project Demo and Technical Implementation</div>
         </div>
+        <div className={data.datoCmsWork.videolink ? "player-wrapper" :"player-none"}>
+              <ReactPlayer className="react-player" width="100%" height="100%" controls="true" light={data.datoCmsWork.videothumbnail} url={data.datoCmsWork.videolink}/>
+        </div>
+            <div className="media-caption">{data.datoCmsWork.caption}</div>
         <div
           className="sheet__body"
           dangerouslySetInnerHTML={{
@@ -46,6 +43,7 @@ export const query = graphql`
       excerpt
       videolink
       videothumbnail
+      caption
       gallery {
         fluid(maxWidth: 200, imgixParams: { fm: "jpg", auto: "compress" }) {
           src
