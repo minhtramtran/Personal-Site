@@ -11,7 +11,7 @@ const Blog = ({ data }) => (
                 <Link to={`/blog/${blogpost.slug}`}>{blogpost.title}</Link>
               </h6>
               <div className="card__description">
-              <p>{blogpost.meta.createdAt} ⏤ {blogpost.excerpt}</p>
+              <p>{blogpost.publishDate} ⏤ {blogpost.excerpt}</p>
               </div>
           </div>
         </article>
@@ -23,14 +23,15 @@ export default Blog
 
 export const query = graphql`
   query BlogQuery {
-    allDatoCmsBlogPost(sort: { fields: [id], order: DESC }) {
+    allDatoCmsBlogPost(sort: { fields: [publishDate], order: DESC }) {
       edges {
         node {
           id
           title
           slug
+          publishDate (formatString: "DD.MM.YYYY")
           meta{
-            createdAt (formatString: "MM.DD.YYYY")
+            createdAt (formatString: "DD.MM.YYYY")
           }
           excerpt
           coverImage {
