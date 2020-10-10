@@ -66,10 +66,10 @@ const TemplateWrapper = ({ children }) => {
                   <Link to="/">Home</Link>
                 </li>
                 <li>
-                  <Link to="/about">About</Link>
+                  <Link to="/blog">Blog</Link>
                 </li>
                 <li>
-                  <Link to="/blog">Blog</Link>
+                  <Link to="/about">About</Link>
                 </li>
               </ul>
               <p className="sidebar__social">
