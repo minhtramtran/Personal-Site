@@ -7,11 +7,20 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
-    `gatsby-transformer-remark`,
+    `gatsby-plugin-sharp`,
     {
-      resolve: `gatsby-source-datocms`,
+      resolve: `gatsby-transformer-remark`,
       options: {
-        apiToken: `07c0bf72c7e06a6f61237cc6149308`
+        plugins: [
+          {
+            resolve: `gatsby-remark-images-datocms`,
+            options: {
+              apiToken: '`07c0bf72c7e06a6f61237cc6149308`',
+              maxWidth: 590,
+              showCaptions: true,
+            },
+          },
+        ],
       },
     },
   ],
