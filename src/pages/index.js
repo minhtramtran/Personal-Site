@@ -6,7 +6,7 @@ import Layout from "../components/layout"
 import Tabs from "../components/tabs"
 
 
-const workCats = ["Coursework", "Work"]
+const workCats = ["All", "Desktop/ Mobile" , "Extended Reality", "Prototyping" ,"Creative Coding"]
 
 const IndexPage = ({ data }) => (
   <Layout>
@@ -15,7 +15,7 @@ const IndexPage = ({ data }) => (
           <div label={element}>
               <Masonry className="showcase">
               {data.allDatoCmsWork.edges
-                  .filter(({ node }) => node.category === element)          
+                  .filter(({ node }) => node.category.includes(element))          
                   .map(({node: work}) => (
                     <div key={work.id} className="showcase__item">
                         <figure className="card">
