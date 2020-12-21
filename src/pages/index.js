@@ -1,62 +1,39 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
-import Masonry from 'react-masonry-component'
-import Img from 'gatsby-image'
+import { graphql } from 'gatsby'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 import Layout from "../components/layout"
-import Tabs from "../components/tabs"
 
-
-const workCats = ["All", "Desktop/ Mobile" , "Extended Reality", "Prototyping" ,"Creative Coding"]
-
-const IndexPage = ({ data }) => (
+const About = ({ data: { about } }) => (
   <Layout>
-    <Tabs>
-      {workCats.map((element) =>
-          <div label={element}>
-              <Masonry className="showcase">
-              {data.allDatoCmsWork.edges
-                  .filter(({ node }) => node.category.includes(element))          
-                  .map(({node: work}) => (
-                    <div key={work.id} className="showcase__item">
-                        <figure className="card">
-                            <Link to={`/works/${work.slug}`} className="card__image">
-                                <Img fluid={work.coverImage.fluid} />
-                            </Link>
-                            <figcaption className="card__caption">
-                                <h6 className="card__title">
-                                    <Link to={`/works/${work.slug}`}>{work.title}</Link>
-                                </h6>
-                                <div className="card__description">
-                                    <p>{work.excerpt}</p>
-                                </div>
-                            </figcaption>
-                        </figure>
-                    </div>
-              ))}
-          </Masonry>
-          </div>
-      )}
-    </Tabs>
+    <article className="sheet">
+      <HelmetDatoCms seo={about.seoMetaTags} />
+      <div className="sheet__inner">
+        <h1 className="sheet__title">{about.title}</h1>
+        <p className="sheet__lead">{about.subtitle}</p>
+        <div
+          className="sheet__body"
+          dangerouslySetInnerHTML={{
+            __html: about.bioNode.childMarkdownRemark.html,
+          }}
+        />
+      </div>
+    </article>
   </Layout>
 )
 
-export default IndexPage
+export default About
 
 export const query = graphql`
-  query IndexQuery {
-    allDatoCmsWork(sort: { fields: [position], order: ASC }) {
-      edges {
-        node {
-          id
-          title
-          slug
-          excerpt
-          category
-          coverImage {
-            fluid(maxWidth: 450, imgixParams: { fm: "jpg", auto: "compress" }) {
-              ...GatsbyDatoCmsSizes
-            }
-          }
+  query AboutQuery {
+    about: datoCmsAboutPage {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
+      title
+      subtitle
+      bioNode {
+        childMarkdownRemark {
+          html
         }
       }
     }
