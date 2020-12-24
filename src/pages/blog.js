@@ -3,7 +3,7 @@ import { Link, graphql } from 'gatsby'
 import Layout from "../components/layout"
 import Tabs from "../components/tabs"
 
-const cats = ["Misc", "Vietnamese", "Books"]
+const cats = ["Books", "Misc", "Vietnamese"]
 
 const Blog = ({ data }) => (
     <Layout>
