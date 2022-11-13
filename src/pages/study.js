@@ -13,7 +13,7 @@ const Study = ({ data: { study } }) => (
         <div
           className="sheet__body"
           dangerouslySetInnerHTML={{
-            __html: research.bioNode.childMarkdownRemark.html,
+            __html: study.bioNode.childMarkdownRemark.html,
           }}
         />
       </div>
@@ -24,8 +24,8 @@ const Study = ({ data: { study } }) => (
 export default Study
 
 export const query = graphql`
-  query ResearchQuery {
-    research: datoCmsResearch {
+  query StudyQuery {
+    study: datoCmsStudy {
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
