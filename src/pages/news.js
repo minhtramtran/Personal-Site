@@ -6,6 +6,7 @@ import Layout from "../components/layout"
 const News = ({ data: { news } }) => (
   <Layout>
     <article className="sheet">
+      <HelmetDatoCms seo={news.seoMetaTags} />
       <div className="sheet__inner">
         <h1 className="sheet__title">{news.title}</h1>
         <p className="sheet__byline">{news.subtitle}</p>
@@ -25,6 +26,9 @@ export default News
 export const query = graphql`
   query NewsQuery {
     research: datoCmsNews {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
       title
       subtitle
       bioNode {
