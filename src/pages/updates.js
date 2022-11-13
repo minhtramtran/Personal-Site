@@ -3,17 +3,17 @@ import { graphql } from 'gatsby'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 import Layout from "../components/layout"
 
-const Updates = ({ data: { updates } }) => (
+const Latest = ({ data: { latest } }) => (
   <Layout>
     <article className="sheet">
       <HelmetDatoCms seo={news.seoMetaTags} />
       <div className="sheet__inner">
-        <h1 className="sheet__title">{updates.title}</h1>
-        <p className="sheet__byline">{updates.subtitle}</p>
+        <h1 className="sheet__title">{latest.title}</h1>
+        <p className="sheet__byline">{latest.subtitle}</p>
         <div
           className="sheet__body"
           dangerouslySetInnerHTML={{
-            __html: updates.bioNode.childMarkdownRemark.html,
+            __html: latest.bioNode.childMarkdownRemark.html,
           }}
         />
       </div>
@@ -21,11 +21,11 @@ const Updates = ({ data: { updates } }) => (
   </Layout>
 )
 
-export default Updates
+export default Latest
 
 export const query = graphql`
-  query UpdatesQuery {
-    research: datoCmsUpdates {
+  query LatestQuery {
+    research: datoCmsLatest {
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
