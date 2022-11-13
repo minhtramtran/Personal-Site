@@ -25,7 +25,7 @@ export default News
 
 export const query = graphql`
   query NewsQuery {
-    research: datoCmsNews {
+    news: datoCmsNews {
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
