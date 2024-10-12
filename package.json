@@ -16,7 +16,7 @@
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-helmet": "^5.2.0",
-    "react-masonry-component": "^6.2.1",
+    "react-masonry-component": "^6.3.0",
     "react-player": "^2.6.2",
     "react-slick": "^0.25.2",
     "sas": "^3.0.4",
